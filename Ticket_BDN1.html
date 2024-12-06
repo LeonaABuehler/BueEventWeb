@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Ticket</title>
+    <style>
+        body {
+            font-family: Helvetica;
+            text-align: center;
+        }
+        .ticket {
+            width: 300px;
+            height: 150px;
+            border: 2px solid black;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+			margin-bottom: 20px;
+        }
+        .name-placeholder {
+            position: absolute;
+            top: 60px; /* Adjust for desired position */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+			
+        }
+		.header{
+			margin: -10px 0; /* Optional: Adjust space around the line */
+		}
+		.textbox{
+			width: 300px;              /* Width of the textbox */
+            height: 40px;              /* Height of the textbox */
+            padding: 5px 10px;         /* Inner spacing */
+            font-size: 16px;           /* Font size inside the textbox */
+            border: 2px solid green;   /* Green border */
+            border-radius: 5px;        /* Slightly rounded corners */
+            background-color: #ccffcc; /* Light green background */
+            outline: none;             /* Removes the blue outline */
+            color: #333; 
+		}
+        @media print {
+            body {
+                visibility: hidden;
+            }
+            .ticket {
+                visibility: visible;
+                margin: 0;
+                border: none;
+            }
+        }
+		
+
+    </style>
+</head>
+<body>
+    <h1>Personalized Ticket</h1>
+    <label for="name">Enter Your Name:</label><br>
+
+    <input class="textbox" type="text" id="name" placeholder="Your Name" oninput="updateName()"><br><br>
+
+    <div class="ticket">
+    <div class="header">
+        <h2>Family Debate Night</h2>
+    </div>
+    <div class="name-placeholder" id="ticketName">Your Name Here</div>
+	<br>
+    <p>Event Date: Dec 6, 2024</p>
+	
+    <p>Location: Living Room, 6 Liberty Lane, Bethel ME, US</p>
+	<br>
+	<br>
+	<br>
+	<p style="color: red;">This is an AUTHENTIC TICKET <i>for</i> THE BUEHLER DEBATE NIGHT</p>
+	<br>
+	<br>
+
+</div>
+
+    <p>Ctrl+P to print ticket</p>
+
+    <script>
+        function updateName() {
+            const nameInput = document.getElementById('name').value;
+            document.getElementById('ticketName').textContent = nameInput || 'Your Name Here';
+        }
+    </script>
+</body>
+</html>
